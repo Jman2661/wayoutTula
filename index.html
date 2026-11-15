@@ -1,0 +1,214 @@
+- IBRAHIM JEREMIAH BUKAR
+- 0218092973
+html
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>TULA - Create Viral Reels</title>
+<meta name="theme-color" content="#a855f7">
+<meta name="mobile-web-app-capable" content="yes">
+<meta name="apple-mobile-web-app-capable" content="yes">
+<meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+<meta name="apple-mobile-web-app-title" content="TULA">
+<link rel="manifest" href='data:application/manifest+json,[STRIPPED] - Video
+Generator","short_name":"TULA","start_url":".","display":"standalone","background_color":"%230f0f12
+","theme_color":"%23a855f7","icons":[{"src":"https://via.placeholder.com/512x512.png?text=TULA","siz
+es":"512x512","type":"image/png"}]}'>
+<style>
+*{margin:0;padding:0;box-sizing:border-box;font-family:Arial,sans-serif}
+body{background:#0f0f12;color:#fff;padding:20px;padding-bottom:40px}
+.logo{font-size:34px;font-weight:900;text-align:center;margin:10px 0}
+.logo span{color:#a855f7}
+.tag{text-align:center;color:#aaa;margin-bottom:15px}
+.install-bar{background:#a855f7;padding:14px;border-radius:12px;text-align:center;margin-
+bottom:15px}
+.install-bar button{background:#fff;color:#000;padding:10px 18px;border:none;border-radius:20px;font-
+weight:800;cursor:pointer;margin-top:8px}
+.card{background:#1c1c22;border-radius:16px;padding:20px;margin-bottom:15px}
+label{display:block;margin:12px 0 6px;color:#ddd}
+textarea,select,input{width:100%;padding:12px;border-radius:10px;border:1px solid
+#333;background:#111;color:#fff;outline:none}
+textarea{height:90px;resize:none}
+button{width:100%;padding:14px;border:none;border-radius:12px;background:#a855f7;color:#fff;font-
+weight:800;font-size:16px;cursor:pointer;margin-top:12px}
+button.secondary{background:#333}
+.badge{text-align:center;background:#26262e;padding:10px;border-radius:20px;font-size:13px;margin-
+bottom:15px}
+.preview{background:#000;border-radius:16px;min-height:320px;display:flex;align-items:center;justify-
+content:center;text-align:center;padding:20px}
+.preview h2{font-size:26px;line-height:1.3}
+.paywall{display:none;background:#1c1c22;border:2px solid #a855f7;border-
+radius:16px;padding:20px;margin-top:15px}
+.bank-box{background:#111;padding:15px;border-radius:12px;margin:12px 0;line-height:1.8}
+.hidden{display:none}
+.success{background:#16a34a;padding:12px;border-radius:10px;text-align:center;margin-top:10px}
+.wa-btn{display:block;text-align:center;background:#25D366;color:#fff;padding:14px;border-
+radius:12px;font-weight:800;text-decoration:none;margin-top:12px;font-size:16px}
+.footer{text-align:center;color:#666;font-size:12px;margin-top:10px}
+</style>
+</head>
+<body>
+<div class="logo">TULA<span>.</span></div>
+<p class="tag">Create viral videos for Reels, TikTok & Shorts</p>
+<div class="install-bar" id="installBar">
+Download TULA App<br>
+<button onclick="installApp()">Install TULA Now</button>
+<p style="font-size:11px;margin-top:8px;opacity:0.8">On iPhone: Tap Share - Add to Home Screen</p>
+</div>
+<div class="badge" id="creditText">Loading...</div>
+<div class="card" id="createCard">
+<h3>Create Your Video</h3>
+<label>Your Idea / Script</label>
+<textarea id="script" placeholder="e.g. Motivate young business owners to never give up..."></textarea>
+<label>Video Style</label>
+<select id="style">
+<option>Motivation</option>
+<option>Business / Product Ad</option>
+<option>Comedy</option>
+<option>Birthday</option>
+<option>Church / Gospel</option>
+<option>Love / Relationship</option>
+</select>
+<label>Video Length</label>
+<select id="length">
+<option>15 Seconds - Reels</option>
+<option>30 Seconds - TikTok</option>
+<option>60 Seconds - Shorts</option>
+</select>
+<button onclick="createVideo()">Generate Video</button>
+</div>
+<div class="card hidden" id="resultCard">
+<h3>Your Video Preview</h3>
+<div class="preview" id="previewBox"><h2>Your video will appear here</h2></div>
+<p style="margin-top:10px;color:#aaa;font-size:13px;text-align:center" id="captionText"></p>
+<button onclick="downloadVideo()">Download Video</button>
+<button class="secondary" onclick="resetForm()">Create Another Video</button>
+</div>
+<div class="paywall" id="paywall">
+<h2 style="text-align:center">Unlock TULA Pro - N500</h2>
+<p style="text-align:center;color:#ccc;margin-top:8px">You have used your 1 FREE video. Pay N500 to
+create another video.</p>
+<div class="bank-box">
+<b>Bank:</b> GTBank<br>
+<b>Account Name:</b> YOUR NAME HERE<br>
+<b>Account Number:</b> YOUR GTBANK ACCOUNT HERE<br>
+<b>Amount:</b> N500<br>
+<b>Narration:</b> TULA Payment
+</div>
+<label>Upload Payment Receipt</label>
+<input type="file" id="receipt" accept="image/*" onchange="previewReceipt(event)">
+<div id="receiptPreview" style="margin-top:10px"></div>
+<button onclick="submitPayment()">I Have Paid - Submit Receipt</button>
+<a
+href="https://wa.me/2349131406609?text=Hello%2C%20I%20have%20paid%20N500%20for%20TULA.%
+20Here%20is%20my%20receipt." target="_blank" class="wa-btn">Send Receipt on WhatsApp</a>
+<p style="font-size:12px;color:#aaa;text-align:center;margin-top:8px">WhatsApp: 09131406609</p>
+<hr style="margin:18px 0;border-color:#333">
+<label>Have Unlock Code? Enter it here</label>
+<input type="text" id="unlockCode" placeholder="e.g. TULA-500-1234">
+<button class="secondary" onclick="checkCode()">Unlock With Code</button>
+<div id="payMsg"></div>
+</div>
+<div class="card" style="text-align:center;font-size:12px;color:#888">
+<b>Admin:</b> Generate unlock codes and send to user after confirming payment.<br>
+<button class="secondary" onclick="generateCode()" style="max-width:220px;margin:10px
+auto">Generate Unlock Code (Admin)</button>
+<div id="adminCode"></div>
+</div>
+<p class="footer">Made with TULA - 1st Video FREE, Next Video N500</p>
+<script>
+let deferredPrompt;
+window.addEventListener('beforeinstallprompt', (e) => {
+e.preventDefault();
+deferredPrompt = e;
+document.getElementById('installBar').style.display = 'block';
+});
+function installApp(){
+if(deferredPrompt){
+deferredPrompt.prompt();
+deferredPrompt.userChoice.then(()=>{ deferredPrompt = null; });
+} else {
+alert("To download TULA: On Android tap 3 dots - Add to Home Screen. On iPhone tap Share - Add to
+Home Screen.");
+}
+}
+const FREE_LIMIT = 1;
+const VALID_CODES_KEY = "tula_valid_codes";
+function getCount(){ return parseInt(localStorage.getItem("tula_count") || "0"); }
+function updateBadge(){
+let c = getCount();
+let left = FREE_LIMIT - c;
+document.getElementById("creditText").innerText = left > 0 ? "You have " + left + " FREE video left" :
+"Free trial used. Pay N500 for next video";
+}
+updateBadge();
+function createVideo(){
+let count = getCount();
+if(count >= FREE_LIMIT){
+document.getElementById("paywall").style.display = "block";
+alert("You have used your free video. Please pay N500 to continue.");
+return;
+}
+let script = document.getElementById("script").value.trim();
+if(!script){ alert("Please type your video idea first"); return; }
+let style = document.getElementById("style").value;
+let length = document.getElementById("length").value;
+document.getElementById("previewBox").innerHTML = "<h2>" + script.substring(0,120) + "</h2>";
+document.getElementById("captionText").innerText = style + " | " + length + " | Made with TULA";
+document.getElementById("resultCard").classList.remove("hidden");
+document.getElementById("resultCard").scrollIntoView({behavior:"smooth"});
+localStorage.setItem("tula_count", count + 1);
+updateBadge();
+}
+function resetForm(){
+if(getCount() >= FREE_LIMIT){
+document.getElementById("paywall").style.display = "block";
+alert("Pay N500 to create another video");
+return;
+}
+document.getElementById("script").value = "";
+document.getElementById("resultCard").classList.add("hidden");
+window.scrollTo({top:0, behavior:"smooth"});
+}
+function downloadVideo(){ alert("In full version, your HD video will download here without
+watermark."); }
+function previewReceipt(e){
+let file = e.target.files[0];
+if(file){
+let url = URL.createObjectURL(file);
+document.getElementById("receiptPreview").innerHTML = '<img src="'+url+'"
+style="width:100%;border-radius:10px">';
+}
+}
+function submitPayment(){
+document.getElementById("payMsg").innerHTML = '<div class="success">Receipt received! Send it on
+WhatsApp to get your unlock code.</div>';
+}
+function generateCode(){
+let code = "TULA-500-" + Math.floor(1000 + Math.random()*9000);
+let codes = JSON.parse(localStorage.getItem(VALID_CODES_KEY) || "[]");
+codes.push(code);
+localStorage.setItem(VALID_CODES_KEY, JSON.stringify(codes));
+document.getElementById("adminCode").innerHTML = "<b>New Code: " + code + "</b><br>Copy and
+send to user after payment.";
+}
+function checkCode(){
+let input = document.getElementById("unlockCode").value.trim().toUpperCase();
+let codes = JSON.parse(localStorage.getItem(VALID_CODES_KEY) || "[]");
+if(codes.includes(input)){
+codes = codes.filter(c => c !== input);
+localStorage.setItem(VALID_CODES_KEY, JSON.stringify(codes));
+localStorage.setItem("tula_count", FREE_LIMIT - 1);
+updateBadge();
+document.getElementById("paywall").style.display = "none";
+alert("Unlocked! You can now create 1 more video.");
+window.scrollTo({top:0, behavior:"smooth"});
+} else {
+alert("Invalid code. Please check and try again.");
+}
+}
+</script>
+</body>
+</html>
